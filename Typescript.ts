@@ -156,3 +156,35 @@ export class Area{
 }
 
 /** import {className} from 'RelativePath' **/
+
+
+    export class LikesComponent{
+    constructor(public likesCount:number,public isSelected:boolean){}
+
+    //Method~1
+    onClick(){
+        if(this.isSelected){
+            this.likesCount--;
+            this.isSelected = false;
+        }
+        else{
+            this.likesCount++;
+            this.isSelected = true;
+        }
+    }
+
+    // Method ~2
+    onClicked(){
+        this.likesCount += (this.isSelected) ? -1 : 1;
+        this.isSelected = !this.isSelected;
+    }
+
+}
+
+
+let testCompo = new LikesComponent(5,false);
+testCompo.onClicked();
+console.log(`Likes Freq. ${testCompo.likesCount} && isSelected ${testCompo.isSelected}`);
+
+testCompo.onClick();
+console.log(`Likes Freq. ${testCompo.likesCount} && isSelected ${testCompo.isSelected}`);
